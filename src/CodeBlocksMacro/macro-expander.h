@@ -1,5 +1,5 @@
-#ifndef DEFINITION_SET_H
-#define DEFINITION_SET_H
+#ifndef MACRO_EXPANDER_H
+#define MACRO_EXPANDER_H
 
 #include <string>
 #include <stlstrings.h>

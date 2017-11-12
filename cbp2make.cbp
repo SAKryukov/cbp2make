@@ -173,7 +173,7 @@
 			<Option target="Release" />
 			<Option target="Profile" />
 		</Unit>
-		<Unit filename="src/CodeBlocksMacro/definition-set.h" />
+		<Unit filename="src/CodeBlocksMacro/macro-expander.h" />
 		<Unit filename="src/buildtools.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
