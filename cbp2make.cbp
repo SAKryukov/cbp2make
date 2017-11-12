@@ -7,18 +7,18 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/cbp2make" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="./bin.Debug/cbp2make" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj.Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="--local -in cbp2make.cbp -unix -windows --wrap-objects --with-deps" />
+				<Option parameters="--local -in c:\sa\doc\job\Migdal\Dushanbe.GitHub\projects\BlackBox\BlackBox.cbp -unix --wrap-objects --with-deps" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/cbp2make" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="./bin.Release/cbp2make" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj.Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
