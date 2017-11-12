@@ -31,7 +31,7 @@
 #include "depsearch.h"
 #include "tinyxml.h"
 
-#include "CodeBlocksMacro/definition-set.h"
+#include "CodeBlocksMacro/macro-expander.h"
 //------------------------------------------------------------------------------
 
 CCodeBlocksProject::CCodeBlocksProject(void)

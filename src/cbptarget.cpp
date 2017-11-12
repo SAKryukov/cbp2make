@@ -25,7 +25,7 @@
 #include "stlfutils.h"
 #include "tinyxml.h"
 
-#include "CodeBlocksMacro/definition-set.h"
+#include "CodeBlocksMacro/macro-expander.h"
 //------------------------------------------------------------------------------
 
 CBuildTarget::CBuildTarget(const CString& projectTitle) : m_projectTitle(projectTitle)
@@ -366,8 +366,7 @@ void CBuildTarget::Read(const TiXmlElement *TargetRoot)
    if ((value = (char *)option->Attribute("output")))
    {
     m_Output = value;
-    m_Output.ReplaceAll(DefinitionSet::MacroTarget(), m_Title);
-    m_Output.ReplaceAll(DefinitionSet::MacroProject(), m_projectTitle);
+    MacroExpander::Expand(m_Output, m_projectTitle, m_Title);
    }
    if ((value = (char *)option->Attribute("prefix_auto")))
    {
@@ -542,8 +541,7 @@ void CBuildTarget::Read(const TiXmlElement *TargetRoot)
   m_UCName = UpperCase(m_MFName);
   m_LCName = LowerCase(m_MFName);
   m_ObjectOutput = RemoveTrailingPathDelimiter(m_ObjectOutput);
-  m_ObjectOutput.ReplaceAll(DefinitionSet::MacroTarget(), m_Title);
-  m_ObjectOutput.ReplaceAll(DefinitionSet::MacroProject(), m_projectTitle);
+  MacroExpander::Expand(m_ObjectOutput, m_projectTitle, m_Title);
  }
 }
 

@@ -86,6 +86,23 @@ class CString
   double GetFloat(void) const;
   void Fill(const char AChar);
   void Print(std::ostream& out);
+ public: //SA!!!
+  void inline ReplaceAll(const std::string& from, const std::string& to) {
+      replaceAll(m_String, from, to);
+  }
+  void inline ReplaceAll(const CString& from, const CString& to) {
+      replaceAll(m_String, from.GetString(), to.GetString());
+  }
+  void inline ReplaceAll(const std::string& from, const CString& to) {
+      replaceAll(m_String, from, to.GetString());
+  }
+ private:  //SA!!!
+  static inline void replaceAll(std::string& source, std::string const& find, std::string const& replace) {
+   for(std::string::size_type index = 0; (index = source.find(find, index)) != std::string::npos;) {
+    source.replace(index, find.length(), replace);
+    index += replace.length();
+   }
+  } //replaceAll
  public:
   CString(void);
   CString(const char AChar);
