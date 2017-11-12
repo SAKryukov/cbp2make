@@ -30,6 +30,8 @@
 #include "stlfutils.h"
 #include "depsearch.h"
 #include "tinyxml.h"
+
+#include "CodeBlocksMacro/definition-set.h"
 //------------------------------------------------------------------------------
 
 CCodeBlocksProject::CCodeBlocksProject(void)
@@ -128,7 +130,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
     if (strcmp(target->Value(),"Target")) break;
     if (0!=target)
     {
-     CBuildTarget *build_target = new CBuildTarget();
+     CBuildTarget *build_target = new CBuildTarget(this->m_Title);
      build_target->Read(target);
      m_BuildTargets.push_back(build_target);
     }
@@ -308,7 +310,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
  // add default target if project has no targets
  if (m_BuildTargets.size()==0)
  {
-  CBuildTarget *target = new CBuildTarget();
+  CBuildTarget *target = new CBuildTarget(this->m_Title);
   m_BuildTargets.push_back(target);
  }
  // generate object names for units
@@ -809,6 +811,7 @@ bool CCodeBlocksProject::GenerateMakefile
   for (size_t t = 0; t < m_BuildTargetIndex.size(); t++)
   {
    CBuildTarget *target = m_BuildTargetIndex[t];
+   CString SACurrentTargetTitle = target->Title(); //SA???
    int tc_id = m_TargetToolChainIndex[t];
    //std::cout<<"target #"<<t<<" -> toolchain #"<<tc_id<<std::endl<<std::flush;
    if (((tc_id<0) || (tc_id>=(int)m_ToolChainIndex.size())) && !Config.BeQuiet())

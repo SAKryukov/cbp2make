@@ -80,6 +80,7 @@ class CBuildTarget
   CString m_UCName;
   CString m_LCName;
   CString m_MFName;
+  CString m_projectTitle;
  public:
   CString Title(void) const { return m_Title; }
   CStringList Platforms(void) const { return m_Platforms; }
@@ -130,7 +131,7 @@ class CBuildTarget
   void Read(const TiXmlElement *TargetRoot);
   void Show(void);
  public:
-  CBuildTarget(void);
+  CBuildTarget(const CString& projectTitle);
   ~CBuildTarget(void);
 };
 
