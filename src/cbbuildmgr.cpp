@@ -52,7 +52,7 @@ bool CCodeBlocksBuildManager::LoadProjectOrWorkspace(const CString& FileName)
  const TiXmlElement *root = cbpw.RootElement();
  if (0==strcmp(root->Value(),"CodeBlocks_project_file"))
  {
-  m_Project.Read(root);
+  m_Project.Read(root, FileName);
   m_ProjectLoaded = true;
   result = true;
  }

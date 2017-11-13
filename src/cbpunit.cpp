@@ -29,7 +29,8 @@
 #include "CodeBlocksMacro/macro-expander.h"
 //------------------------------------------------------------------------------
 
-CBuildUnit::CBuildUnit(const CString& projectTitle) : m_projectTitle(projectTitle)
+CBuildUnit::CBuildUnit(const CString& projectTitle, const CString& projectDirectory)
+    : m_projectTitle(projectTitle), m_ProjectDirectory(projectDirectory)
 {
  Clear();
 }
@@ -65,7 +66,7 @@ void CBuildUnit::Read(const TiXmlElement *UnitRoot)
  if ((value = (char *)UnitRoot->Attribute("filename")))
  {
   m_FileName = value;
-  MacroExpander::Expand(m_FileName, m_projectTitle, CString());
+  MacroExpander::Expand(m_FileName, m_projectTitle, m_ProjectDirectory, CString());
  }
  TiXmlNode *_option = (TiXmlNode *)UnitRoot->FirstChild("Option");
  while (0!=_option)

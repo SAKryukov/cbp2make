@@ -45,6 +45,7 @@ class CCodeBlocksProject
   CString m_Title;
   CString m_DefaultTarget;
   CString m_Compiler;
+  CString m_ProjectDirectory;
   bool m_ExtendedObjectNames;
   CStringList m_CompilerOptions;
   CStringList m_CompilerDirectories;
@@ -77,7 +78,7 @@ class CCodeBlocksProject
   void SortUnitsByWeight(void);
  public:
   void Clear(void);
-  void Read(const TiXmlElement *ProjectRoot);
+  void Read(const TiXmlElement *ProjectRoot, const CString& fileName);
   bool LoadProject(const CString& FileName);
   void Show(void);
  private:

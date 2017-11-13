@@ -28,8 +28,10 @@
 #include "CodeBlocksMacro/macro-expander.h"
 //------------------------------------------------------------------------------
 
-CBuildTarget::CBuildTarget(const CString& projectTitle) : m_projectTitle(projectTitle)
+CBuildTarget::CBuildTarget(const CString& projectTitle, const CString& projectDirectory)
+    : m_projectTitle(projectTitle), m_ProjectDirectory(projectDirectory)
 {
+ //SA??? handle file name
  Clear();
 }
 
@@ -366,7 +368,7 @@ void CBuildTarget::Read(const TiXmlElement *TargetRoot)
    if ((value = (char *)option->Attribute("output")))
    {
     m_Output = value;
-    MacroExpander::Expand(m_Output, m_projectTitle, m_Title);
+    MacroExpander::Expand(m_Output, m_projectTitle, m_ProjectDirectory, m_Title);
    }
    if ((value = (char *)option->Attribute("prefix_auto")))
    {
@@ -541,7 +543,7 @@ void CBuildTarget::Read(const TiXmlElement *TargetRoot)
   m_UCName = UpperCase(m_MFName);
   m_LCName = LowerCase(m_MFName);
   m_ObjectOutput = RemoveTrailingPathDelimiter(m_ObjectOutput);
-  MacroExpander::Expand(m_ObjectOutput, m_projectTitle, m_Title);
+  MacroExpander::Expand(m_ObjectOutput, m_projectTitle, m_ProjectDirectory, m_Title);
  }
 }
 

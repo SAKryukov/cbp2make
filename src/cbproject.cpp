@@ -80,8 +80,9 @@ void CCodeBlocksProject::Clear(void)
  m_Units.clear();
 }
 
-void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
+void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot, const CString& fileName)
 {
+ this->m_ProjectDirectory = ExtractFilePath(fileName);
  const TiXmlNode *_version = ProjectRoot->FirstChild("FileVersion");
  if (0!=_version)
  {
@@ -130,7 +131,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
     if (strcmp(target->Value(),"Target")) break;
     if (0!=target)
     {
-     CBuildTarget *build_target = new CBuildTarget(this->m_Title);
+     CBuildTarget *build_target = new CBuildTarget(this->m_Title, this->m_ProjectDirectory);
      build_target->Read(target);
      m_BuildTargets.push_back(build_target);
     }
@@ -300,7 +301,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
    if (0!=unit)
    {
     if (strcmp(unit->Value(),"Unit")) break;
-    CBuildUnit *build_unit = new CBuildUnit(m_Title);
+    CBuildUnit *build_unit = new CBuildUnit(m_Title, m_ProjectDirectory);
     build_unit->Read(unit);
     m_Units.push_back(build_unit);
    }
@@ -310,7 +311,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
  // add default target if project has no targets
  if (m_BuildTargets.size()==0)
  {
-  CBuildTarget *target = new CBuildTarget(this->m_Title);
+  CBuildTarget *target = new CBuildTarget(this->m_Title, this->m_ProjectDirectory);
   m_BuildTargets.push_back(target);
  }
  // generate object names for units
@@ -333,6 +334,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
 
 bool CCodeBlocksProject::LoadProject(const CString& FileName)
 {
+ this->m_ProjectDirectory = ExtractFilePath(FileName);
  bool result = false;
  TiXmlDocument cbp;
  result = cbp.LoadFile(FileName.GetCString());
@@ -341,7 +343,7 @@ bool CCodeBlocksProject::LoadProject(const CString& FileName)
  const TiXmlElement *root = cbp.RootElement();
  if (0==strcmp(root->Value(),"CodeBlocks_project_file"))
  {
-  Read(root);
+  Read(root, FileName);
   result = true;
  } // root value
  return result;
