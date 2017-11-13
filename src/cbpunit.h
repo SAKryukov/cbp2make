@@ -39,6 +39,7 @@ class CBuildUnit
   bool m_DoCompile;
   bool m_DoLink;
   int m_Weight;
+  CString m_projectTitle;
   //
   CString m_ObjectFileName;
  public:
@@ -54,7 +55,7 @@ class CBuildUnit
   void Read(const TiXmlElement *UnitRoot);
   void Show(void);
  public:
-  CBuildUnit(void);
+  CBuildUnit(const CString& projectTitle);
   ~CBuildUnit(void);
 };
 

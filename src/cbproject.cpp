@@ -300,7 +300,7 @@ void CCodeBlocksProject::Read(const TiXmlElement *ProjectRoot)
    if (0!=unit)
    {
     if (strcmp(unit->Value(),"Unit")) break;
-    CBuildUnit *build_unit = new CBuildUnit();
+    CBuildUnit *build_unit = new CBuildUnit(m_Title);
     build_unit->Read(unit);
     m_Units.push_back(build_unit);
    }

@@ -25,9 +25,11 @@
 #include "stlconvert.h"
 #include "stlfutils.h"
 #include "tinyxml.h"
+
+#include "CodeBlocksMacro/macro-expander.h"
 //------------------------------------------------------------------------------
 
-CBuildUnit::CBuildUnit(void)
+CBuildUnit::CBuildUnit(const CString& projectTitle) : m_projectTitle(projectTitle)
 {
  Clear();
 }
@@ -63,6 +65,7 @@ void CBuildUnit::Read(const TiXmlElement *UnitRoot)
  if ((value = (char *)UnitRoot->Attribute("filename")))
  {
   m_FileName = value;
+  MacroExpander::Expand(m_FileName, m_projectTitle, CString());
  }
  TiXmlNode *_option = (TiXmlNode *)UnitRoot->FirstChild("Option");
  while (0!=_option)
