@@ -15,3 +15,8 @@ At the moment of writing, only three macro (in seven forms) are expanded:
 * $(PROJECT_NAME), $(PROJECTNAME)
 * $(PROJECT_DIR), $(PROJECTDIR), $(PROJECT_DIRECTORY), $(PROJECTDIRECTORY)
 
+The macro expansion is applied to the properties:
+* `output`, per-configuration property
+* `object_output`, per-configuration property
+* Compiler include directories, on both per-project and per-configuration levels
+
