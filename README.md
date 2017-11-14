@@ -4,7 +4,7 @@ This work is derived from [mankash/cbp2make](https://github.com/mankash/cbp2make
 
 Licensed by the original author as GNU General Public License version 3.0 (GPLv3)
 
-## About
+## Description
 
 '''cbp2make''' is a stand-alone build tool that allows you to generate makefile(s) for GNU Make out of Code::Blocks IDE project or workspace file. (See also [http://forums.codeblocks.org/index.php/topic,13675.0.html])
 
@@ -20,3 +20,4 @@ The macro expansion is applied to the properties:
 * `object_output`, per-configuration property
 * Compiler include directories, on both per-project and per-configuration levels
 
+Basic test suite is added in the directory "test-set". The "cbp2make.cbp" project's properties `working_dir` and `parameters` (command-line arguments) are set to convert the worspace file of the test suite.
