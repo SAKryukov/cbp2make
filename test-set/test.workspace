@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="Test">
-		<Project filename="../../../../../doc/job/Migdal/Barenc.GitHub/sources/BlackBox/projects/OutputPerTarget/OutputPerTarget.cbp" />
+		<Project filename="projects/IncludePath.cbp" />
+		<Project filename="projects/OutputPerTarget.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

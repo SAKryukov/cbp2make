@@ -9,9 +9,10 @@
 			<Target title="Debug">
 				<Option output="./bin.$(TARGET_NAME)/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
 				<Option object_output="./obj.$(TARGET_NAME)/" />
+				<Option working_dir="$(TARGET_OUTPUT_DIR)/../test-set" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="--local -in c:\sa\doc\job\Migdal\Dushanbe.GitHub\projects\BlackBox\BlackBox.cbp -unix --wrap-objects --with-deps" />
+				<Option parameters="-unix -in test.workspace -out Makefile" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -40,7 +41,7 @@
 				<Option object_output="./obj.$(TARGET_NAME)/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="--local -in cbp2make.cbp -unix -windows --wrap-objects --with-deps" />
+				<Option parameters="-unix -in test.workspace -out Makefile" />
 				<Compiler>
 					<Add option="-pg" />
 					<Add option="-g" />
