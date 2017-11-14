@@ -2,6 +2,11 @@
     cbp2make : Makefile generation tool for the Code::Blocks IDE
     Copyright (C) 2010-2013 Mirai Computing (mirai.computing@gmail.com)
 
+    Portions Copyright (C) 2017 Sergey A Kryukov
+    https://github.com/SAKryukov/cbp2make (fork)
+    http://www.SAKryukov.org
+    https://sakryukov.github.io
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or

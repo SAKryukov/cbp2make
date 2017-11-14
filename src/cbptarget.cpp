@@ -2,6 +2,11 @@
     cbp2make : Makefile generation tool for the Code::Blocks IDE
     Copyright (C) 2010-2013 Mirai Computing (mirai.computing@gmail.com)
 
+    Portions Copyright (C) 2017 Sergey A Kryukov
+    https://github.com/SAKryukov/cbp2make (fork)
+    http://www.SAKryukov.org
+    https://sakryukov.github.io
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -444,7 +449,9 @@ void CBuildTarget::Read(const TiXmlElement *TargetRoot)
     }
     if ((value = (char *)option->Attribute("directory")))
     {
-     m_CompilerDirectories.Insert(value);
+     CString csValue(value);
+     MacroExpander::Expand(csValue, m_projectTitle, m_ProjectDirectory, m_Title);
+     m_CompilerDirectories.Insert(csValue.GetCString());
     }
    }
    _option = (TiXmlNode *)_compiler->IterateChildren(_option);
